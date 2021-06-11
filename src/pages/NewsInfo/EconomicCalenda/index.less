@@ -1,0 +1,90 @@
+.oneLevelTitle{
+    margin-left: 20px;
+}
+.oneLevel{
+    margin-right: 32px;
+    height: 20px;
+    line-height: 20px;
+    padding-bottom: 4px;
+    color: white;
+    cursor: pointer;
+}
+.oneLevelActive{
+    border-bottom: 2px solid #EDC027;
+    color: #EDC027;
+}
+.weekTitle{
+    margin: 32px 20px 0px 20px;
+    height: 56px;
+    line-height: 56px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+}
+.weekSpan, .leftPre{
+    flex: 1;
+    text-align: center;
+}
+.leftOut{
+    margin-left: 16px;
+    margin-right: 4px;
+}
+.rightNext{
+    flex: 1;
+    text-align: center;
+    float: right;
+    margin-right: 20px;
+}
+.rightOut{
+    margin-left: 4px;
+}
+.weekActive{
+    color: #EDC027;
+}
+.filterTitle{
+    float:right;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+.leftPre,.rightNext,.weekSpan{
+    cursor: pointer;
+}
+.listTable{
+    margin:0px 20px 20px 20px;
+}
+.filterSelect{
+    width: 160px;
+    margin-left: 8px;
+}
+.dateTimeCheck{ 
+    margin-left: 8px;
+}
+.economic{
+    :global{
+        .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-item, .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+            background: #343436;
+            border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ant-pagination-item-active {
+            background: #edc025;
+        }
+        .anticon{
+            color:rgba(255, 255, 255, 0.85);
+        }
+        .ant-pagination-item-active a {
+            color: black!important;
+        }
+        .ant-pagination{
+            color: white;
+            float: right;
+        }
+        .ant-pagination-item a {
+            display: block;
+            padding: 0 6px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis {
+            color: rgba(255, 255, 255, 0.65);
+        }
+    }
+}

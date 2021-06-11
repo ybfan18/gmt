@@ -1,0 +1,245 @@
+
+.twoLevelTitle{
+    margin-left: 20px;
+}
+.twoLevel{
+    margin-right: 16px;
+    padding: 8px 19px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 20px;
+    display: inline-table;
+    color: white;
+    background: #333333;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.twoLevelActive{
+    color: #EDC027;
+}
+.threeLevelTitle{
+    margin-top: 11px;;
+}
+.threeLevel{
+    margin-right: 16px;
+    padding: 8px 19px;
+    height: 18px;
+    line-height: 18px;
+    margin-top: 20px;
+    display: inline-table;
+    background: #333333;
+    cursor: pointer;
+    border-radius: 18px;
+    opacity: 0.45;
+    border: 1px solid #FFFFFF;
+}
+.txtCoWh{
+    color: white;
+}
+.threeLevelActive{
+    background-color: #EDC027;
+    color: #000000;
+}
+.timelineTop{
+    margin-top: 32px;
+}
+.checkInfo{
+    cursor: pointer;
+}
+.dayTtile{
+    display: inline-block;
+    margin: 32px 10px 10px 20px;
+    width: 152px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangTC-Medium, PingFangTC;
+    font-weight: 500;
+    color: #EDC027;
+    line-height: 20px;
+}
+.loadingSpin{
+    margin-left: 50%;
+    position: absolute;
+}
+.treeNotice{
+    opacity: 0.85;
+    width: 18%;
+    margin-left: 20px;
+    margin-top: 32px;
+    float: left;
+    display: inline-block;
+}
+.tableNotice{
+    display: inline-block;
+    float: right;
+    width: 79%;
+    margin-top: 32px;
+}
+.searchInput{
+    width: 160px;
+    height: 36px;
+    margin-bottom: 24px;
+    margin-right: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.notcieContent{
+:global{
+    .ant-timeline{
+        color: white!important;
+    }
+    .ant-tree{
+        color: #FFFFFF;
+        background: #1A1A1C;
+    }
+    .ant-tree-show-line .ant-tree-switcher {
+        background: #1b1b1d;
+    }
+    .ant-tree .ant-tree-node-content-wrapper:hover {
+        background-color:#1A1A1C;
+        color: #edc025;
+    }
+    .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+        background-color: #1b1b1d;
+        color: #edc025;
+    }
+    //form  and   table 全局样式修改
+    .ant-pro-table-search{
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .ant-form-item-label > label {
+        color: white;
+    }
+    .ant-pro-table-list-toolbar-title{
+        color: white;
+    }
+    .ant-empty-normal{
+        color: white;
+    }
+    .ant-table-thead th.ant-table-column-has-sorters:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .ant-input{
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    .ant-btn{
+        width: 76px;
+        height: 36px;
+        background: #EDC027;
+        border-radius: 2px;
+        color: black;
+        border-color: #EDC027;
+        position: absolute;
+        margin-top: -1px;
+    }
+    .ant-btn:hover, .ant-btn:focus {
+        color: black;
+    }
+    .ant-btn:hover, .ant-btn:focus, .ant-btn:active {
+        text-decoration: none;
+        background: #EDC027;
+    }
+    .ant-input-affix-wrapper{
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ant-checkbox-disabled .ant-checkbox-inner {
+        background-color: #edc025;
+        border-color: #edc025 !important;
+    }
+    .ant-table-tbody > tr.ant-table-placeholder:hover > td {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .ant-table-thead > tr > th{
+        background: rgba(255, 255, 255, 0.1);
+        border-bottom: none;
+    }
+    .ant-table-tbody > tr > td {
+        border-bottom: none;
+    }
+    .ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-thead th.ant-table-column-sort {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .ant-table {
+        color: #FFFFFF;
+    }    
+    td.ant-table-column-sort {
+        background: #1f1f21;
+    }
+    .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-item, .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        background: #343436;
+        border-radius: 2px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ant-pagination-item-active {
+        background: #edc025;
+    }
+    .anticon{
+        color:rgba(255, 255, 255, 0.85);
+    }
+    .ant-pagination-item-active a {
+        color: black!important;
+    }
+    .ant-pagination{
+        color: white;
+        float: right;
+    }
+    .ant-pagination-item a {
+        display: block;
+        padding: 0 6px;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis {
+        color: rgba(255, 255, 255, 0.65);
+    }
+    .ant-select {
+        color: white!important;
+    }
+    .ant-select-dropdown{
+        color: white!important;
+        background-color: #343436!important;
+    }
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+        color: white!important;
+        background-color: #1f1f21!important;
+    }
+    .ant-select-item{
+        color: white!important;
+    }
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+        background-color: #1f1f21!important;
+    }
+    .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+        height: 36px;
+    }
+    input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+        -webkit-text-fill-color: #ededed !important;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        background-color:transparent;
+        background-image: none;
+        transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+      }
+      input {
+         background-color:transparent;
+      }
+}
+}
+:global{
+    .ant-select-dropdown{
+        color: white!important;
+        background-color: #343436!important;
+    }
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+        color: white!important;
+        background-color: #1f1f21!important;
+    }
+    .ant-select-item{
+        color: white!important;
+    }
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+        background-color: #1f1f21!important;
+    }
+}

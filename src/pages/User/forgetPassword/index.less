@@ -1,0 +1,251 @@
+@import '~antd/es/style/themes/default.less';
+
+// //登陆注册输入框按钮固定宽度
+@user-width:464px;
+
+.main {
+  width: 560px;
+  margin: 0 auto;
+  float: right;
+  margin-top: 108px;
+  margin-right: 200px;
+  background: #333333;
+  border-radius: 8px;
+  @media screen and (max-width: @screen-sm) {
+    width: 95%;
+    max-width: 560px;
+  }
+
+  :global {
+    .@{ant-prefix}-tabs-nav-list {
+      margin: auto;
+      font-size: 16px;
+    }
+  }
+
+  .icon {
+    margin-left: 16px;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .other {
+    margin-top: 24px;
+    line-height: 22px;
+    text-align: left;
+    .register {
+      float: right;
+    }
+  }
+
+  .prefixIcon {
+    color: @primary-color;
+    font-size: @font-size-base;
+  }
+
+  .contentTitle {
+    height: 72px;
+    background: #333333;
+    border-radius: 8px 8px 0px 0px;
+    > span{
+      display: inline-block;
+      margin-left: 48px;
+      margin-top: 32px;
+      font-family: PingFangSC-Medium;
+      font-size: 24px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: justify;
+      font-weight: 500;
+
+    }
+  }
+  .widthContent{
+    width: @user-width;
+    display: block;
+    margin: 0 auto;
+  }
+  .textYellow{
+    color: #EDC027;
+  }
+  .textWhite{
+    color: #FFFFFF;
+  }
+  .textWhite, .textYellow{
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-align: justify;
+    line-height: 20px;
+    font-weight: 500;
+  }
+  .spanPointer{
+    cursor: pointer;
+  }
+  .tabLine{
+    height: 1px;
+    margin-top: -24px;
+    margin-bottom: 39px;
+    opacity: 0.2;
+    background: #000000;
+  }
+  //样式重写
+  :global {
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn, .ant-tabs-tab:hover {
+      color: #edc027!important;
+    }
+    .ant-tabs-tab{
+      margin-right: 128px!important;
+    }
+    .ant-tabs-ink-bar{
+      background: #edc027!important;
+    }
+    .ant-input-affix-wrapper, .ant-form-item-control-input-content{
+      background: #474747;
+      border: none;
+      color: white;
+    }
+    .ant-tabs-tab-btn {
+      font-size: 18px!important;
+    }
+    .ant-checkbox-inner{
+      background-color: #353535!important;
+    }
+    .ant-form-item{
+      margin-bottom: 32px!important;
+    }
+    .ant-tabs-nav{
+      margin-bottom: 24px;
+    }
+    .ant-tabs-top > .ant-tabs-nav::before{
+      border-bottom: none!important;
+    }
+    .ant-checkbox-inner {
+      border-color: #353535!important;
+    }
+    .ant-checkbox-checked::after{
+      border: none!important;
+    }
+    .ant-checkbox-checked .ant-checkbox-inner::after{
+      border-color: #edc027;
+    }
+    .form-control {
+      height: 40px!important;
+      width: @user-width!important;
+      background: #474747!important;
+      border: none!important;
+      color: white!important;
+      border-radius: 2px!important;
+    }
+
+    .ant-form-item-control-input-content{
+      height: 40px!important;
+    }
+
+    .country-list, .search  {
+      width: @user-width!important;
+      background: #000000!important;
+    }
+    .country-list{
+      border: 1px solid #EDC027!important;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.16)!important;
+      border-radius: 2px!important;
+    }
+
+    .search{
+      opacity: 0.45!important;
+      border: 1px solid #E5E5E5!important;
+      border-radius: 2px!important;
+    }
+
+    .react-tel-input{
+      margin-bottom: 32px!important;
+    }
+    .flag-dropdown{
+      background: #474747!important;
+      border: 1px solid #474747!important;
+    }
+    .react-tel-input .country-list .country.highlight,
+    .react-tel-input .country-list .country:hover {
+      background-color: #1a1a1a!important;
+    }
+    .search-box{
+      width: 424px!important;
+    }
+    .react-tel-input .selected-flag .arrow{
+      border-top: none!important;
+      border-top: 4px solid #ffffff!important;
+    }
+    .react-tel-input .selected-flag .arrow.up {
+      border-top: none!important;
+      border-bottom: 4px solid #ffffff!important;
+    }
+    .country-name, .react-tel-input .country-list .country.highlight .country-name:hover{
+      color: white!important;
+    }
+    .react-tel-input .country-list .country .dial-code {
+      color: #f1f1f1!important;
+      right: 20px!important;
+      position: absolute!important;
+    }
+
+    .react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus,
+    .react-tel-input .flag-dropdown.open .selected-flag {
+      background: #474747!important;
+    }
+    .ant-form-item-control-input-content {
+      .ant-btn {
+        background: #474747!important;
+        border: none;
+        > span{
+          color: #EDC027;
+        }
+      }
+    }
+    .ant-btn {
+      > span{
+        font-family: PingFangSC-Medium;
+        font-size: 16px;
+        color: #000000;
+        letter-spacing: 0;
+        text-align: justify;
+        font-weight: 500;
+      }
+    }
+    .ant-input{
+      background: #474747!important;
+      border: none;
+      color: white;
+    }
+    .ant-tabs-tab-btn{
+      color: #d0d0d0!important;
+    }
+    .ant-input-lg {
+      font-size: 14px!important;
+    }
+    .react-tel-input .country-list .search {
+      color: white;
+      position: initial;
+    }
+    .react-tel-input .country-list .country {
+      padding: 7px 20px!important;
+    }
+    input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+      -webkit-text-fill-color: #ededed !important;
+      -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+      background-color:transparent;
+      background-image: none;
+      transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+    }
+    input {
+       background-color:transparent;
+    }
+  }
+}

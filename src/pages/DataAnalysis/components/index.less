@@ -1,0 +1,123 @@
+.descBox{
+    margin: 24px 32px;
+}
+.listEven{
+    background: #2a2a2b;
+}
+.pageBox{
+    height: 60px;
+    margin-top: 10px;
+}
+.dataBox{
+    margin: 24px 16px;
+}
+.spinLoading{
+    margin-left: 45%;
+    position: absolute;
+}
+.shareGreen{
+    color: #0BCE87;
+}
+.shareRed{
+    color: #FF0000;
+}
+.dataTitle,.dataContent{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    :first-child{
+        text-align: left;
+        margin-left: 32px;
+        width: 40%;
+    }
+    :last-child{
+        margin-right: 20px;
+    }
+    > span{
+        width: 15%;
+        opacity: 0.85;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 40px;
+        font-weight: 400;
+        text-align: right;
+    }
+}
+.levelTitle{
+    opacity: 0.85;
+    font-family: PingFangSC-Regular;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 44px;
+    height: 44px;
+    font-weight: 400;
+    margin-left: 32px;
+}
+.levelTitleExt{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+.oddBack{
+    background: #292a2b;
+}
+.checkInfo{
+    cursor: pointer;
+}
+    //公司介绍
+    .companyInfo{
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 2px;
+        margin: 32px 20px;
+    }
+    .infoTitle{
+        height: 40px;
+        line-height: 40px;
+        background: #292a2b;
+        border-radius: 2px 2px 0 0;
+    }
+    .titleTxt{
+        margin-left: 32px;
+        opacity: 0.85;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        font-weight: 500;
+    }
+:global{
+    .ant-table-row-expand-icon{
+        visibility: hidden;
+    }
+    .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-item, .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        background: #343436;
+        border-radius: 2px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ant-pagination-item-active {
+        background: #edc025;
+    }
+    .anticon{
+        color:rgba(255, 255, 255, 0.85);
+    }
+    .ant-pagination-item-active a {
+        color: black!important;
+    }
+    .ant-pagination{
+        color: white;
+        float: right;
+    }
+    .ant-pagination-item a {
+        display: block;
+        padding: 0 6px;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis {
+        color: rgba(255, 255, 255, 0.65);
+    }
+}
