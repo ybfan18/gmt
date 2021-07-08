@@ -1,4 +1,4 @@
-import { Spin, Table, Pagination } from 'antd';
+import { message, Table, Pagination } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { useIntl, FormattedMessage } from 'umi';
 import { queryNoticeByRic, downloadkNotice } from '../service';
@@ -10,7 +10,7 @@ import moment from 'moment';
 const NewsNotice = (props) => {
     let pageTotal = '共';
     let pageItems = '条';
-    const { } = props;
+    const { keyType, ric } = props;
     const userInfo = getAuthority();//获取用户相关信息
     const [oneInfoTitle, setOneInfoTitle] = useState('新闻公告&研究报告');//一级名称
     const [loadingState, setLoadingState] = useState(true);//loading
@@ -97,18 +97,24 @@ const NewsNotice = (props) => {
             noticeParams.language = 'ZH';
             pageTotal = '共';
             pageItems = '条';
+            if (keyType && keyType == 2) {
+                setOneInfoTitle('新闻公告&研究报告');
+            }
         } else {
             noticeParams.language = 'EN';
             pageTotal = 'Total';
             pageItems = 'items';
+            if (keyType && keyType == 2) {
+                setOneInfoTitle('Press Announcements & Research Reports');
+            }
         }
+        queryNewsNoticeLists(ric);
 
-        queryNewsNoticeLists();
-
-    }, []);
+    }, [ric]);
 
     //查询公告列表
-    const queryNewsNoticeLists = () => {
+    const queryNewsNoticeLists = (ric) => {
+        noticeParams.ric = ric;
         queryNoticeByRic(noticeParams).then(
             res => {
                 if (res.state) {
@@ -181,22 +187,29 @@ const NewsNotice = (props) => {
     }
 
     return (
-        <div>
-            <Table loading={loadingState}
-                scroll={{ x: '100%' }}
-                rowKey={(record) => record.commonID}
-                columns={columns}
-                rowClassName={getRowClassName}
-                dataSource={newsNoticePage}
-                pagination={false} />
-            <Pagination
-                total={newsNoticeData.totalHit}
-                showTotal={(total) => `${pageTotal} ${newsNoticeData.totalHit ? newsNoticeData.totalHit : 0} ${pageItems} `}
-                defaultPageSize={20}
-                current={cutPage ? cutPage : 1}
-                onChange={onChange}
-                onShowSizeChange={onShowSizeChange}
-            />
+        <div className={styles.companyInfo}>
+            <div className={styles.infoTitle}>
+                <span className={styles.titleTxt}>{oneInfoTitle}</span>
+            </div>
+            <div>
+                <Table loading={loadingState}
+                    scroll={{ x: '100%' }}
+                    rowKey={(record) => record.commonID}
+                    columns={columns}
+                    rowClassName={getRowClassName}
+                    dataSource={newsNoticePage}
+                    pagination={false} />
+                <div className={styles.pageBox}>
+                    <Pagination
+                        total={newsNoticeData.totalHit}
+                        showTotal={(total) => `${pageTotal} ${newsNoticeData.totalHit ? newsNoticeData.totalHit : 0} ${pageItems} `}
+                        defaultPageSize={20}
+                        current={cutPage ? cutPage : 1}
+                        onChange={onChange}
+                        onShowSizeChange={onShowSizeChange}
+                    />
+                </div>
+            </div>
         </div>
     )
 };

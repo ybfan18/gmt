@@ -235,7 +235,7 @@ const FinancialNews = () => {
         <div className={styles.timelineTop}>
           <Timeline mode={'left'}>
             {newsPageList && newsPageList.length > 0 ? newsPageList.map((item, index) => (
-              <Timeline.Item label={moment(item.LT).format("HH:mm")} key={index}>
+              <Timeline.Item label={moment(item.LT).format("HH:mm")} key={item.ID}>
                 <Link target="_blank" to={{
                   pathname: `/news/details/${item.ID}`
 

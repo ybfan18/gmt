@@ -1,8 +1,8 @@
-import { Dropdown, message, Menu, Input, Tree, Spin, Pagination, AutoComplete, Space } from 'antd';
+import { Dropdown, message, Menu, Spin, AutoComplete } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { useIntl, FormattedMessage, Link } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
-import { querySecuritiesInfo, queryRicLists, queryShareholderInfo } from './service';
+import { querySecuritiesInfo, queryRicLists } from './service';
 import styles from './index.less';
 import { getAuthority } from '@/utils/authority';
 import moment from 'moment';
@@ -12,7 +12,12 @@ import Executives from './components/Executives';
 import EquityShareholders from './components/EquityShareholders';
 import FinancialData from './components/FinancialData';
 import ProfitForecast from './components/ProfitForecast';
+import ProfitForecastReport from './components/ProfitForecastReport';
 import NewsNotice from './components/NewsNotice';
+import TradingValuation from './components/TradingValuation';
+import PeerComparison from './components/PeerComparison';
+import { menuList } from './components/DataUtil';
+import SignificantEvent from './components/SignificantEvent';
 
 const { Option } = AutoComplete;
 const DataAnalysis = () => {
@@ -36,23 +41,16 @@ const DataAnalysis = () => {
     language: "ZH"
   };
 
-  let pageTotal = '共';
-  let pageItems = '条';
 
   useEffect(() => {
     if (intl.locale === "zh-CN") {
       params.language = 'ZH';
       paramsList.language = 'ZH';
-      pageTotal = '共';
-      pageItems = '条';
     } else {
       params.language = 'EN';
       paramsList.language = 'EN';
-      pageTotal = 'Total';
-      pageItems = 'items';
     }
     securitiesInfo('')
-    setLoadingState(false);
     setInfoTitle(menuList[0].name);
 
   }, []);
@@ -60,122 +58,23 @@ const DataAnalysis = () => {
   //查询证券信息
   const securitiesInfo = (ric) => {
     params.ric = ric;
-    setLoadingListState(true);
+    setLoadingListState(true)
     querySecuritiesInfo(params).then(
       res => {
         if (res.state) {
-          setLoadingListState(false);
+          setLoadingState(false);
+          setLoadingListState(false)
           if (res.data) {
             setStateData(res.data);
           }
         } else {
-          setLoadingListState(false);
+          setLoadingState(false);
+          setLoadingListState(false)
           message.error(res.message);
         }
       }
     );
   }
-
-  //标题数据
-  const menuList = [
-    {
-      id: 0,
-      name: '概览'
-    },
-    {
-      id: 1,
-      name: '公司资料&证券资料',
-      subMenu: [
-        {
-          id: 101,
-          name: '公司介绍'
-        },
-        {
-          id: 102,
-          name: '董事会高管'
-        },
-        {
-          id: 103,
-          name: '股票详情'
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: '新闻公告&研究报告',
-      nameEN: 'Press Announcements & Research Reports'
-    },
-    {
-      id: 3,
-      name: '股本股东',
-      subMenu: [
-        {
-          id: 301,
-          name: '股东报告',
-          type: 'Consolidated'
-        },
-        {
-          id: 302,
-          name: '基金持仓',
-          type: 'Fund'
-        },
-      ]
-    },
-    {
-      id: 4,
-      name: '盈利预测&研究报告'
-    },
-    {
-      id: 5,
-      name: '交易&估值'
-    },
-    {
-      id: 6,
-      name: '财务数据',
-      subMenu: [
-        {
-          id: 601,
-          name: '成长能力',
-        },
-        {
-          id: 602,
-          name: '现金流量',
-        },
-        {
-          id: 603,
-          name: '损益表'
-        },
-        {
-          id: 604,
-          name: '资产负债表'
-        },
-        {
-          id: 605,
-          name: '盈利能力与收益质量',
-        },
-        {
-          id: 606,
-          name: '营运能力',
-        },
-        {
-          id: 607,
-          name: '主营构成',
-        },
-        {
-          id: 608,
-          name: '资本结构与偿债能力',
-        },
-      ]
-    },
-    {
-      id: 7,
-      name: '重大事件'
-    },
-    {
-      id: 8,
-      name: '同行比较'
-    },
-  ]
 
   const [one, setOne] = useState(0);
   const [twoMenu, setTwoMenu] = useState([]);
@@ -184,7 +83,7 @@ const DataAnalysis = () => {
     setOne(item.id);
     if (item.subMenu) {
       setTwoMenu(item.subMenu);
-    }else{
+    } else {
       setInfoKey(item.id);
       setInfoTitle(item.name);
     }
@@ -207,7 +106,7 @@ const DataAnalysis = () => {
     </Menu>
   );
 
-  const [ricState, setRicState] = useState({});//ric码
+  const [ricState, setRicState] = useState('');//ric码
   //ric码查询结果
   const [ricList, setRicList] = useState([]);
   let ricParams = {
@@ -220,7 +119,6 @@ const DataAnalysis = () => {
   //模糊查询ric集合
   const queryRicListData = (e) => {
     ricParams.ric = e;
-    setRicState(e);
     queryRicLists(ricParams).then(
       res => {
         if (res.state) {
@@ -233,12 +131,28 @@ const DataAnalysis = () => {
       }
     );
   }
+  //选择完成赋值ric
+  const getRicValue = (e) => {
+    setRicState(e);
+    securitiesInfo(e);
+  }
 
   return (
     <PageContainer loading={loadingState} className={styles.securitiesInfo}>
       <div className={styles.inputDiv}>
+        <span className={styles.pageTitle}>
+          {stateData.GetShareholdersReport_Response_1 ?
+            stateData.GetShareholdersReport_Response_1.SymbolReport ?
+              stateData.GetShareholdersReport_Response_1.SymbolReport.Identifiers ?
+                stateData.GetShareholdersReport_Response_1.SymbolReport.Identifiers.Identifier.length > 0 ?
+                  stateData.GetShareholdersReport_Response_1.SymbolReport.Identifiers.Identifier.map((idt) => (
+                    idt.Symbol === 'TickerSymbol' ? idt.Value : ''
+                  )) : '' : '' : '' : ''
+          }
+        </span>
         <AutoComplete className={styles.searchInput}
           onChange={(e) => queryRicListData(e)}
+          onSelect={(e) => getRicValue(e)}
           name='code'
           style={{ marginTop: '-2px' }}
           placeholder={intl.formatMessage({
@@ -269,41 +183,42 @@ const DataAnalysis = () => {
             </span>
         )) : ''}
       </div>
-      {(infoKey != 301 && infoKey != 302 && infoKey != 601 && infoKey != 602 && infoKey != 603 && infoKey != 604) ?
-        <div className={styles.companyInfo}>
-          <div className={styles.infoTitle}>
-            <span className={styles.titleTxt}>{infoTitle}</span>
-          </div>
-          <div>
-            {
-              (infoKey == 101 || infoKey == 103) ?
-                stateData.GetGeneralInformation_Response_1 ?
-                  <CompanyInfo allData={stateData} keyType={infoKey} /> :
-                  <Spin className={styles.spinLoading} /> :
-                infoKey == 102 ?
-                  stateData.GetGeneralInformation_Response_1 ?
-                    <Executives allData={stateData} /> :
-                    <Spin className={styles.spinLoading} /> :
-                  infoKey == 2 ?
-                    <NewsNotice /> :
-                    ''
-            }
-          </div>
-        </div> : ''
-      }
-      {(infoKey == 301 || infoKey == 302) ?
+      {!loadingListState ?
         <div>
-          <EquityShareholders keyType={infoKey} ric={ricState} />
-        </div>
-        : infoKey == 601 || infoKey == 602 || infoKey == 603 || infoKey == 604 ?
-          <div>
-            <FinancialData keyType={infoKey} />
-          </div>
-          :
-          infoKey == 501 ?
-            <ProfitForecast /> :
-            ''
-      }
+          {
+            (infoKey == 101 || infoKey == 103) ?
+              stateData.GetGeneralInformation_Response_1 ?
+                <CompanyInfo allData={stateData} keyType={infoKey} /> :
+                <Spin className={styles.spinLoading} /> :
+              infoKey == 102 ?
+                stateData.GetGeneralInformation_Response_1 ?
+                  <Executives allData={stateData} keyType={infoKey} /> :
+                  <Spin className={styles.spinLoading} /> :
+                infoKey == 2 ?
+                  <NewsNotice keyType={infoKey} ric={ricState} /> :
+                  (infoKey == 301 || infoKey == 302) ?
+                    <div>
+                      <EquityShareholders keyType={infoKey} ric={ricState} />
+                    </div>
+                    : (infoKey == 601 || infoKey == 602 || infoKey == 603 || infoKey == 604 || infoKey == 605 || infoKey == 606 || infoKey == 608) ?
+                      <div>
+                        <FinancialData keyType={infoKey} ric={ricState} />
+                      </div>
+                      :
+                      (infoKey == 401 || infoKey == 402 || infoKey == 403) ?
+                        <ProfitForecast keyType={infoKey} ric={ricState} /> :
+                        infoKey == 404 ?
+                          <ProfitForecastReport keyType={infoKey} ric={ricState} /> :
+                          (infoKey == 501 || infoKey == 502) ?
+                            <TradingValuation keyType={infoKey} ric={ricState} /> :
+                            (infoKey == 801) ?
+                              <PeerComparison keyType={infoKey} ric={ricState} /> :
+                              (infoKey == 701 || infoKey == 702) ?
+                                <SignificantEvent keyType={infoKey} ric={ricState} /> :
+                                ''
+          }
+        </div> :
+        <Spin className={styles.spinLoading} />}
 
     </PageContainer>
   )

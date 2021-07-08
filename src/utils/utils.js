@@ -301,3 +301,15 @@ export const numberFixed = (item, unit, num) => {
   }
   return item;
 }
+
+/**
+ * 将浮点数四舍五入，取小数点后2位   
+ */
+export const toDecimal = (x) => {
+  var f = parseFloat(x);
+  if (isNaN(f)) {
+    return;
+  }
+  f = Math.round(x * 100) / 100;
+  return f;
+} 

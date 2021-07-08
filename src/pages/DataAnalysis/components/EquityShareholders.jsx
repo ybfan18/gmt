@@ -11,6 +11,7 @@ import {
     Axis,
     Tooltip,
     Geom,
+    Label,
     Coord,
 } from "bizcharts";
 import DataSet from "@antv/data-set";
@@ -258,7 +259,7 @@ const EquityShareholders = (props) => {
                 setTwoInfoTitle('Fund positions');
             }
         }
-        getShareholderInfo();
+        getShareholderInfo(ric);
     }, [ric, keyType])
 
     //f10-4查询股本股东
@@ -274,7 +275,7 @@ const EquityShareholders = (props) => {
     const [pageList, setPageList] = useState([]);
     const [barData, setBarData] = useState([]);//条形图数据
     //模糊查询rici集合
-    const getShareholderInfo = () => {
+    const getShareholderInfo = (ric) => {
         if (keyType) {
             if (keyType == 301) {//股东报告
                 shareParams.type = 'Consolidated';
@@ -286,6 +287,7 @@ const EquityShareholders = (props) => {
         }
         setLoadingPageState(true);
         setBarData([]);
+        shareParams.ric = ric;
         queryShareholderInfo(shareParams).then(
             res => {
                 if (res.state) {
@@ -345,9 +347,9 @@ const EquityShareholders = (props) => {
     });
 
     const label = {
-        offset: 100, // 数值，设置坐标轴文本 label 距离坐标轴线的距离
+        offset: 400, // 数值，设置坐标轴文本 label 距离坐标轴线的距离
         // 设置文本的显示样式，还可以是个回调函数，回调函数的参数为该坐标轴对应字段的数值
-        style: {
+        textStyle: {
             textAlign: 'start', // 文本对齐方向，可取值为： start center end
             fill: 'white', // 文本的颜色
             fontSize: 14, // 文本大小
@@ -366,19 +368,20 @@ const EquityShareholders = (props) => {
                     {barData.length > 0 ?
                         <Chart
                             height={500}
+                            width={1000}
                             data={dv}
                             scale={cols}
                             padding={[20, 450, 40, 100]}
+                            theme='dark'
                             autoFit
                         >
                             <Coord transpose />
-                            <Axis name="pctOfSharesOutstanding" label={label} tickLine={null} line={null} />
-                            <Axis name="investorName" visible={false} />
+                            <Axis name="investorName"  visible={false}/>
+                            <Axis name="pctOfSharesOutstanding" tickLine={null} line={null}/>
                             <Tooltip shared={true} />
                             <Geom
                                 type="interval"
                                 position="pctOfSharesOutstanding*investorName"
-                                label={["investorName", { style: { fill: 'white' } }]}
                                 color={['index', (index) => {
                                     if (index % 2 === 0) {
                                         return '#0161ed';
@@ -388,6 +391,7 @@ const EquityShareholders = (props) => {
                                 }]}
                                 style={{ color: 'white' }}
                             >
+                                <Label content='investorName' offset={5} />
                             </Geom>
                         </Chart>
                         : <Spin className={styles.spinLoading} />}

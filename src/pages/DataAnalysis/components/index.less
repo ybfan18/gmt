@@ -21,6 +21,9 @@
 .shareRed{
     color: #FF0000;
 }
+.textMarLeft{
+    margin-left: 200px;
+}
 .dataTitle,.dataContent{
     display: flex;
     height: 40px;
@@ -69,6 +72,73 @@
 .checkInfo{
     cursor: pointer;
 }
+.timeRange{
+    margin: 24px 20px 32px 32px;
+}
+.timeContentLeft{
+    margin-left: 32px;
+}
+.titilePeer{
+    display: flex;
+    height: 72px;
+    line-height: 72px;
+    >div{
+        flex: 1;
+        display: flex;
+        text-align: center;
+        border-top: 1px solid #232936;
+        border-right: 1px solid #232936;
+        span{
+            flex: 1;
+        }
+    }
+}
+.titilePeerRow{
+    display: flex;
+    >div{
+        flex: 1;
+        text-align: center;
+        border-top: 1px solid #232936;
+        span{
+            flex: 1;
+        }
+    }
+}
+.spanPeer{
+    height: 36px;
+    line-height: 36px;
+}
+.dataPeer{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #232936;
+    >div{
+        flex: 1;
+        display: flex;
+        text-align: center;
+        border-right: 1px solid #232936;
+        span{
+            flex: 1;
+        }
+    }
+}
+.dataPeerRow{
+    display: flex;
+    >div{
+        flex: 1;
+        text-align: center;
+        span{
+            flex: 1;
+        }
+    }
+}
+.leftReback{
+    margin-left: 36px;
+    margin-right: -21px;
+    cursor: pointer;
+}
+
     //公司介绍
     .companyInfo{
         border: 1px solid rgba(255,255,255,0.10);
@@ -119,5 +189,8 @@
     }
     .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis {
         color: rgba(255, 255, 255, 0.65);
+    }
+    .ant-descriptions-item-label {
+        width: 400px;
     }
 }

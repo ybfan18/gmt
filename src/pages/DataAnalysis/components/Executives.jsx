@@ -8,19 +8,29 @@ import { RightCircleOutlined, DownCircleOutlined } from '@ant-design/icons';
 const Executives = (props) => {
 
     //董事会成员信息
-    const { allData } = props;
+    const { allData, keyType } = props;
     const userInfo = getAuthority();//获取用户相关信息
     /** 国际化配置 */
     const intl = useIntl();
 
     const [rowKeys, setRowKeys] = useState([]);
+    const [oneInfoTitle, setOneInfoTitle] = useState('');//一级名称
 
     useEffect(() => {
+        if (intl.locale === "zh-CN") {
+            if (keyType && keyType == 102) {
+                setOneInfoTitle('董事会高管');
+            }
+        } else {
+            if (keyType && keyType == 102) {
+                setOneInfoTitle('Board of directors');
+            }
+        }
     }, [allData])
 
     //展开
     const open = (record) => {
-        let key = record.key;
+        let key = record ? record.ID : '';
         if (rowKeys[0] !== key) {
             let keys = [];
             keys.push(key);
@@ -43,7 +53,7 @@ const Executives = (props) => {
             dataIndex: 'jobTitle',
             render: (val, record) => {
                 return <span>
-                    {record.NameAndTitle.Titles.Designation ? record.NameAndTitle.Titles.Designation.map((item,index) => (
+                    {record.NameAndTitle.Titles.Designation ? record.NameAndTitle.Titles.Designation.map((item, index) => (
                         <span key={index}>
                             <span>{item.LongTitle}</span>
                             <br />
@@ -79,26 +89,33 @@ const Executives = (props) => {
         {
             title: <FormattedMessage id="pages.Executives.introduction" defaultMessage="简介" />,
             dataIndex: 'introduction',
-            render: (record) => rowKeys.length > 0 ? <DownCircleOutlined onClick={() => open(record)} /> : <RightCircleOutlined onClick={() => open(record)} />,
+            render: (val, record) => {
+                return <span>{rowKeys.length > 0 ? <DownCircleOutlined onClick={() => open(record)} /> : <RightCircleOutlined onClick={() => open(record)} />}</span>
+            }
         },
     ];
 
     return (
-        <div className={styles.descBox}>
-            <Table
-                columns={columns}
-                expandable={{
-                    expandedRowRender: record => <p style={{ margin: 20 }}>{record.TenureDates}</p>,
-                    expandedRowKeys: rowKeys
-                }}
-                rowKey={(record) => record.ID}
-                dataSource={allData ? allData.GetGeneralInformation_Response_1 ? allData.GetGeneralInformation_Response_1.GeneralInformation.OfficersInfo.Officer : [] : []}
-                pagination={false}
-                rowClassName={
-                    (record, index) =>
-                        index % 2 === 0 ? styles.listEven : ''
-                }
-            />
+        <div className={styles.companyInfo}>
+            <div className={styles.infoTitle}>
+                <span className={styles.titleTxt}>{oneInfoTitle}</span>
+            </div>
+            <div>
+                <Table
+                    columns={columns}
+                    expandable={{
+                        expandedRowRender: record => <p style={{ margin: 20 }}>{record.ID}</p>,
+                        expandedRowKeys: rowKeys
+                    }}
+                    rowKey={(record) => record.ID}
+                    dataSource={allData ? allData.GetGeneralInformation_Response_1 ? allData.GetGeneralInformation_Response_1.GeneralInformation.OfficersInfo.Officer : [] : []}
+                    pagination={false}
+                    rowClassName={
+                        (record, index) =>
+                            index % 2 === 0 ? styles.listEven : ''
+                    }
+                />
+            </div>
         </div>
     )
 };

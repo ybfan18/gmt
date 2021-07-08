@@ -1,3 +1,162 @@
+//标题数据
+export const menuList = [
+    {
+        id: 0,
+        name: '概览'
+    },
+    {
+        id: 1,
+        name: '公司资料&证券资料',
+        subMenu: [
+            {
+                id: 101,
+                name: '公司介绍'
+            },
+            {
+                id: 102,
+                name: '董事会高管'
+            },
+            {
+                id: 103,
+                name: '股票详情'
+            }
+        ]
+    },
+    {
+        id: 2,
+        name: '新闻公告&研究报告',
+    },
+    {
+        id: 3,
+        name: '股本股东',
+        subMenu: [
+            {
+                id: 301,
+                name: '股东报告',
+                type: 'Consolidated'
+            },
+            {
+                id: 302,
+                name: '基金持仓',
+                type: 'Fund'
+            },
+        ]
+    },
+    {
+        id: 4,
+        name: '盈利预测&研究报告',
+        subMenu: [
+            {
+                id: 401,
+                name: '现金流量表预测',
+            },
+            {
+                id: 402,
+                name: '资产负债表预测',
+            },
+            {
+                id: 403,
+                name: '损益表预测',
+            },
+            {
+                id: 404,
+                name: '推荐&目标价',
+            },
+        ]
+    },
+    {
+        id: 5,
+        name: '交易&估值',
+        subMenu: [
+            {
+                id: 501,
+                name: '每日行情',
+            },
+            {
+                id: 502,
+                name: '估值分析',
+            },
+        ]
+    },
+    {
+        id: 6,
+        name: '财务数据',
+        subMenu: [
+            {
+                id: 601,
+                name: '成长能力',
+            },
+            {
+                id: 602,
+                name: '现金流量',
+            },
+            {
+                id: 603,
+                name: '损益表'
+            },
+            {
+                id: 604,
+                name: '资产负债表'
+            },
+            {
+                id: 605,
+                name: '盈利能力与收益质量',
+            },
+            {
+                id: 606,
+                name: '营运能力',
+            },
+            // {
+            //     id: 607,
+            //     name: '主营构成',
+            // },
+            {
+                id: 608,
+                name: '资本结构与偿债能力',
+            },
+        ]
+    },
+    {
+        id: 7,
+        name: '重大事件',
+        subMenu: [
+            {
+                id: 701,
+                name: '重大事件',
+            },
+            {
+                id: 702,
+                name: '股利数据',
+            },
+        ]
+    },
+    {
+        id: 8,
+        name: '同行比较',
+        subMenu: [
+            {
+                id: 801,
+                name: '财务比率比较',
+            },
+            {
+                id: 802,
+                name: '财务数据比较',
+            },
+            {
+                id: 803,
+                name: '估值分析比较'
+            },
+            {
+                id: 804,
+                name: '市场表现比较'
+            },
+            {
+                id: 805,
+                name: '盈利预测比较',
+            }
+        ]
+    },
+]
 //现金流量表
 export const dataCas = [
     {
@@ -126,7 +285,7 @@ export const dataCas = [
         type: 'SNCC',
         typeExt: 'SNCC'
     }
-    
+
 ]
 
 //损益表
@@ -840,4 +999,103 @@ export const dataOperationAbility = [
         type: 'AASTTURN',
         typeExt: 'AASTTURN'
     }
+]
+//f10-5 资产负债表 利润表 现金流量表  估值等的预测字段
+export const dataForecast = [
+    {
+        nameCN: '每股账面价值',
+        nameEN: 'Book Value per Share',
+        type: 'BPS',
+        section: 'Balance Sheet'
+    },
+    {
+        nameCN: '净收入',
+        nameEN: 'Net Income',
+        type: 'NET',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '资产净值',
+        nameEN: 'Net Asset Value',
+        type: 'NAV',
+        section: 'Balance Sheet'
+    },
+    {
+        nameCN: '毛利率',
+        nameEN: 'Gross Margin',
+        type: 'GRM',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '税前利润',
+        nameEN: 'Pre-tax Profit',
+        type: 'PRE',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '资产收益率',
+        nameEN: 'ROA',
+        type: 'ROA',
+        section: 'Valuation'
+    },
+    {
+        nameCN: '资本支出',
+        nameEN: 'Capital Expenditure',
+        type: 'CPX',
+        section: 'Cash Flow Statement'
+    },
+    {
+        nameCN: '税息折旧及摊销前利润',
+        nameEN: 'EBITDA',
+        type: 'EBT',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '每股股息',
+        nameEN: 'Dividend per Share	',
+        type: 'DPS',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '每股盈余',
+        nameEN: 'EPS',
+        type: 'EPS',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '资本利润率;股权收益率',
+        nameEN: 'ROE',
+        type: 'ROE',
+        section: 'Valuation'
+    },
+    {
+        nameCN: '收入',
+        nameEN: 'Revenue',
+        type: 'SAL',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '每股收益-全面报告',
+        nameEN: 'EPS - Fully Reported',
+        type: 'GPS',
+        section: 'Income Statement'
+    },
+    {
+        nameCN: '净债务',
+        nameEN: 'Net Debt',
+        type: 'NDT',
+        section: 'Balance Sheet'
+    },
+    {
+        nameCN: '每股现金流量',
+        nameEN: 'Cash Flow per Share',
+        type: 'CPS',
+        section: 'Cash Flow Statement'
+    },
+    {
+        nameCN: '息税前利润',
+        nameEN: 'EBIT',
+        type: 'EBI',
+        section: 'Income Statement'
+    },
 ]
